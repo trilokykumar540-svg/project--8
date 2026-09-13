@@ -5,8 +5,11 @@ function About() {
     <>
       <section className="page-hero">
         <div className="page-hero-content">
-       <p>ABOUT WOODMAGIC</p>
-          <h1>Craftsmanship Built Around Your Needs</h1>
+          <p>ABOUT WOODMAGIC</p>
+
+          <h1>
+            Craftsmanship Built Around Your Needs
+          </h1>
 
           <span>
             Professional carpenter and custom furniture
@@ -17,34 +20,43 @@ function About() {
 
       <section className="about-section">
         <div className="about-grid">
-          <div className="about-image-box">
+
+          <div className="about-image-box owner-image-box">
+            <img
+              src="/owner-photo.jpg"
+              alt="Triloky Kumar - Owner of WoodMagic"
+              className="about-owner-image"
+            />
+
             <div className="about-image-overlay">
-              <strong>Quality</strong>
-              <span>Craftsmanship</span>
+              <strong>Triloky Kumar</strong>
+              <span>Owner, WoodMagic</span>
             </div>
           </div>
 
           <div className="about-content">
             <p className="section-label">
-              WHO WE ARE
+              MEET THE OWNER
             </p>
 
             <h2>
-              Reliable Carpenter Work With Attention
-              To Every Detail
+              Triloky Kumar
+              <br />
+              Owner of WoodMagic
             </h2>
 
             <p>
-             WoodMagic provides custom furniture,
-repair and wooden work according to customer
-requirements.
+              Triloky Kumar is the owner of WoodMagic
+              and works closely with customers to provide
+              custom furniture, furniture repair and
+              professional wooden work.
             </p>
 
             <p>
-              Our focus is simple — understand the
+              His focus is simple — understand each
               customer's requirement, provide practical
-              solutions and complete the work with quality
-              finishing.
+              solutions and complete every project with
+              attention to quality, finishing and durability.
             </p>
 
             <div className="about-points">
@@ -71,9 +83,14 @@ requirements.
         </div>
 
         <div className="values-grid">
+
           <article className="value-card">
             <span>01</span>
-            <h3>Understand Requirement</h3>
+
+            <h3>
+              Understand Requirement
+            </h3>
+
             <p>
               We first understand your furniture size,
               style, space and requirement.
@@ -82,7 +99,11 @@ requirements.
 
           <article className="value-card">
             <span>02</span>
-            <h3>Practical Solution</h3>
+
+            <h3>
+              Practical Solution
+            </h3>
+
             <p>
               We suggest practical furniture and wooden
               work according to your requirement.
@@ -91,12 +112,17 @@ requirements.
 
           <article className="value-card">
             <span>03</span>
-            <h3>Quality Completion</h3>
+
+            <h3>
+              Quality Completion
+            </h3>
+
             <p>
               Work is completed with focus on finishing,
               usability and durability.
             </p>
           </article>
+
         </div>
       </section>
     </>

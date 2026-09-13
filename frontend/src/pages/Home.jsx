@@ -42,8 +42,9 @@ function Home() {
 
     loadHome();
   }, []);
-const businessName =
-  business?.businessName || "WoodMagic";
+
+  const businessName =
+    business?.businessName || "WoodMagic";
 
   const phone =
     business?.phone || "9931697178";
@@ -329,15 +330,6 @@ const businessName =
         </div>
 
       </section>
-
-      <a
-        href={`https://wa.me/91${whatsapp}`}
-        target="_blank"
-        rel="noreferrer"
-        className="whatsapp-floating"
-      >
-        WhatsApp
-      </a>
     </>
   );
 }
