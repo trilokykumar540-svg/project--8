@@ -42,9 +42,8 @@ function Home() {
 
     loadHome();
   }, []);
-
-  const businessName =
-    business?.businessName || "Balaji Carpenter";
+const businessName =
+  business?.businessName || "WoodMagic";
 
   const phone =
     business?.phone || "9931697178";

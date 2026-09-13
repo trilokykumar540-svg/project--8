@@ -6,9 +6,9 @@ function Navbar() {
       <div className="nav-container">
 
         <Link to="/" className="brand">
-          <div className="brand-name">
-            <span>Balaji</span> Carpenter
-          </div>
+       <div className="brand-name">
+  <span>Wood</span>Magic
+</div>
 
           <div className="brand-subtitle">
             Custom Furniture • Repair • Wooden Work

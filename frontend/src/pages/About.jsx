@@ -5,7 +5,7 @@ function About() {
     <>
       <section className="page-hero">
         <div className="page-hero-content">
-          <p>ABOUT BALAJI CARPENTER</p>
+       <p>ABOUT WOODMAGIC</p>
           <h1>Craftsmanship Built Around Your Needs</h1>
 
           <span>
@@ -35,9 +35,9 @@ function About() {
             </h2>
 
             <p>
-              Balaji Carpenter provides custom furniture,
-              repair and wooden work according to customer
-              requirements.
+             WoodMagic provides custom furniture,
+repair and wooden work according to customer
+requirements.
             </p>
 
             <p>

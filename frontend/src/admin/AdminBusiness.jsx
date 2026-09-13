@@ -144,7 +144,7 @@ function AdminBusiness() {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <h2>Balaji Carpenter</h2>
+        <h2>WoodMagic</h2>
 
         <nav>
           <Link to="/admin">Dashboard</Link>
@@ -174,7 +174,7 @@ function AdminBusiness() {
               name="businessName"
               value={formData.businessName}
               onChange={handleChange}
-              placeholder="Balaji Carpenter"
+              placeholder="WoodMagic"
             />
 
             <label>Phone Number *</label>

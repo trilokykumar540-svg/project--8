@@ -209,7 +209,7 @@ function AdminServices() {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <h2>Balaji Carpenter</h2>
+        <h2>WoodMagic</h2>
 
         <nav>
           <Link to="/admin">Dashboard</Link>

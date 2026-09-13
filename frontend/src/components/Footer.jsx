@@ -24,8 +24,8 @@ function Footer() {
     fetchBusiness();
   }, []);
 
-  const businessName =
-    business?.businessName || "Balaji Carpenter";
+const businessName =
+  business?.businessName || "WoodMagic";
 
   const phone =
     business?.phone || "9931697178";
@@ -51,9 +51,9 @@ function Footer() {
 
         <div className="footer-brand">
 
-          <div className="footer-logo">
-            <span>Balaji</span> Carpenter
-          </div>
+       <div className="footer-logo">
+  <span>Wood</span>Magic
+</div>
 
           <p>
             Professional carpenter and custom furniture

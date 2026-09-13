@@ -124,7 +124,7 @@ function AdminDashboard() {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <h2>Balaji Carpenter</h2>
+        <h2>WoodMagic</h2>
 
         <nav>
           <Link to="/admin">
@@ -160,7 +160,7 @@ function AdminDashboard() {
           <h1>Dashboard</h1>
 
           <span>
-            Manage Balaji Carpenter website
+            Manage WoodMagic website
             content and customer enquiries.
           </span>
         </div>

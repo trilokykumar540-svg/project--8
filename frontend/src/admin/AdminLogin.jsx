@@ -72,11 +72,13 @@ function AdminLogin() {
   return (
     <div className="admin-login-page">
       <div className="admin-login-card">
+
         <h1>Admin Login</h1>
 
-        <p>Balaji Carpenter Admin Panel</p>
+        <p>WoodMagic Admin Panel</p>
 
         <form onSubmit={handleSubmit}>
+
           <label>Email</label>
 
           <input
@@ -111,6 +113,7 @@ function AdminLogin() {
               ? "Logging in..."
               : "Login"}
           </button>
+
         </form>
       </div>
     </div>

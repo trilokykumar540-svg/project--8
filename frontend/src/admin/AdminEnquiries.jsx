@@ -146,7 +146,7 @@ function AdminEnquiries() {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <h2>Balaji Carpenter</h2>
+        <h2>WoodMagic</h2>
 
         <nav>
           <Link to="/admin">Dashboard</Link>
@@ -251,12 +251,15 @@ function AdminEnquiries() {
                     }
                   >
                     <option value="New">New</option>
+
                     <option value="Contacted">
                       Contacted
                     </option>
+
                     <option value="Confirmed">
                       Confirmed
                     </option>
+
                     <option value="Completed">
                       Completed
                     </option>
