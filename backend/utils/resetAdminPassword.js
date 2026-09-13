@@ -26,7 +26,7 @@ const resetAdminPassword = async () => {
 
     if (!admin) {
       admin = await Admin.create({
-        name: "Balaji Carpenter Admin",
+        name: "WoodMagic Admin",
         email,
         password: hashedPassword,
       });

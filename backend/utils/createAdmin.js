@@ -31,7 +31,7 @@ const createAdmin = async () => {
     );
 
     await Admin.create({
-      name: "Balaji Carpenter Admin",
+      name: "WoodMagic Admin",
       email,
       password: hashedPassword,
     });

@@ -4,7 +4,7 @@ const businessInfoSchema = new mongoose.Schema(
   {
     businessName: {
       type: String,
-      default: "Balaji Carpenter",
+      default: "WoodMagic",
       trim: true,
     },
 

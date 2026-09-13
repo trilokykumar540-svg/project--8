@@ -6,7 +6,7 @@ const getBusinessInfo = async (req, res) => {
 
     if (!business) {
       business = await BusinessInfo.create({
-        businessName: "Balaji Carpenter",
+        businessName: "WoodMagic",
         phone: "9931697178",
         whatsapp: "9931697178",
         address: "Sonpurwa",
