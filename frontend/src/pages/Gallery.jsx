@@ -10,8 +10,8 @@ function Gallery() {
       try {
         const [galleryRes, businessRes] =
           await Promise.all([
-            fetch("http://localhost:5000/api/gallery"),
-            fetch("http://localhost:5000/api/business"),
+            fetch("/api/gallery"),
+            fetch("/api/business"),
           ]);
 
         const galleryData = await galleryRes.json();

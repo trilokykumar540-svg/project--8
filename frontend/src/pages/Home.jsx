@@ -11,9 +11,9 @@ function Home() {
       try {
         const [businessRes, servicesRes, galleryRes] =
           await Promise.all([
-            fetch("http://localhost:5000/api/business"),
-            fetch("http://localhost:5000/api/services"),
-            fetch("http://localhost:5000/api/gallery"),
+            fetch("/api/business"),
+            fetch("/api/services"),
+            fetch("/api/gallery"),
           ]);
 
         const businessData = await businessRes.json();

@@ -3,6 +3,7 @@ const express = require("express");
 const {
   getGalleryItems,
   addGalleryItem,
+  updateGalleryItem,
   deleteGalleryItem,
 } = require("../controllers/galleryController");
 
@@ -18,6 +19,12 @@ router.post(
   "/",
   protectAdmin,
   addGalleryItem
+);
+
+router.put(
+  "/:id",
+  protectAdmin,
+  updateGalleryItem
 );
 
 router.delete(

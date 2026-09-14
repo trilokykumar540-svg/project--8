@@ -6,15 +6,35 @@ const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
+    if (
+      typeof email !== "string" ||
+      typeof password !== "string" ||
+      !email.trim() ||
+      !password
+    ) {
       return res.status(400).json({
         success: false,
         message: "Email and password are required.",
       });
     }
 
+    if (!process.env.JWT_SECRET) {
+      console.error(
+        "JWT_SECRET is missing from environment variables."
+      );
+
+      return res.status(500).json({
+        success: false,
+        message: "Server configuration error.",
+      });
+    }
+
+    const normalizedEmail = email
+      .trim()
+      .toLowerCase();
+
     const admin = await Admin.findOne({
-      email: email.toLowerCase(),
+      email: normalizedEmail,
     });
 
     if (!admin) {
@@ -38,7 +58,7 @@ const adminLogin = async (req, res) => {
 
     const token = jwt.sign(
       {
-        adminId: admin._id,
+        adminId: admin._id.toString(),
         email: admin.email,
       },
       process.env.JWT_SECRET,
@@ -47,7 +67,7 @@ const adminLogin = async (req, res) => {
       }
     );
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Login successful.",
       token,
@@ -58,10 +78,11 @@ const adminLogin = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("Admin login error:", error);
+
+    return res.status(500).json({
       success: false,
       message: "Login failed.",
-      error: error.message,
     });
   }
 };

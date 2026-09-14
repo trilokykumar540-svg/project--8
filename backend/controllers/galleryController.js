@@ -70,6 +70,74 @@ const addGalleryItem = async (req, res) => {
   }
 };
 
+const updateGalleryItem = async (req, res) => {
+  try {
+    const item = await Gallery.findById(
+      req.params.id
+    );
+
+    if (!item) {
+      return res.status(404).json({
+        success: false,
+        message: "Gallery item not found.",
+      });
+    }
+
+    const {
+      title,
+      category,
+      description,
+      price,
+      imageBase64,
+    } = req.body;
+
+    if (!title || !category) {
+      return res.status(400).json({
+        success: false,
+        message: "Title and category are required.",
+      });
+    }
+
+    item.title = title;
+    item.category = category;
+    item.description = description || "";
+    item.price = price || "";
+
+    if (imageBase64) {
+      const uploadResult =
+        await cloudinary.uploader.upload(
+          imageBase64,
+          {
+            folder: "balaji-carpenter/gallery",
+          }
+        );
+
+      if (item.imagePublicId) {
+        await cloudinary.uploader.destroy(
+          item.imagePublicId
+        );
+      }
+
+      item.imageUrl = uploadResult.secure_url;
+      item.imagePublicId = uploadResult.public_id;
+    }
+
+    await item.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Gallery item updated successfully.",
+      item,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to update gallery item.",
+      error: error.message,
+    });
+  }
+};
+
 const deleteGalleryItem = async (req, res) => {
   try {
     const item = await Gallery.findById(
@@ -105,5 +173,6 @@ const deleteGalleryItem = async (req, res) => {
 module.exports = {
   getGalleryItems,
   addGalleryItem,
+  updateGalleryItem,
   deleteGalleryItem,
 };

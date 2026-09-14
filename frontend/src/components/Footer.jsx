@@ -8,7 +8,7 @@ function Footer() {
     const fetchBusiness = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/business"
+          "/api/business"
         );
 
         const data = await response.json();
@@ -24,8 +24,8 @@ function Footer() {
     fetchBusiness();
   }, []);
 
-const businessName =
-  business?.businessName || "WoodMagic";
+  const businessName =
+    business?.businessName || "WoodMagic";
 
   const phone =
     business?.phone || "9931697178";
@@ -51,9 +51,9 @@ const businessName =
 
         <div className="footer-brand">
 
-       <div className="footer-logo">
-  <span>Wood</span>Magic
-</div>
+          <div className="footer-logo">
+            <span>Wood</span>Magic
+          </div>
 
           <p>
             Professional carpenter and custom furniture

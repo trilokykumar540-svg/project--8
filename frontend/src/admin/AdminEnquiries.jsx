@@ -19,14 +19,11 @@ function AdminEnquiries() {
 
   const fetchEnquiries = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/enquiries",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch("/api/enquiries", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       const data = await response.json();
 
@@ -56,7 +53,7 @@ function AdminEnquiries() {
   const handleStatusChange = async (id, status) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/enquiries/${id}/status`,
+        `/api/enquiries/${id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -104,7 +101,7 @@ function AdminEnquiries() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/enquiries/${id}`,
+        `/api/enquiries/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -251,15 +248,12 @@ function AdminEnquiries() {
                     }
                   >
                     <option value="New">New</option>
-
                     <option value="Contacted">
                       Contacted
                     </option>
-
                     <option value="Confirmed">
                       Confirmed
                     </option>
-
                     <option value="Completed">
                       Completed
                     </option>

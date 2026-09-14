@@ -31,18 +31,15 @@ function AdminDashboard() {
           galleryResponse,
           enquiriesResponse,
         ] = await Promise.all([
-          fetch("http://localhost:5000/api/services"),
+          fetch("/api/services"),
 
-          fetch("http://localhost:5000/api/gallery"),
+          fetch("/api/gallery"),
 
-          fetch(
-            "http://localhost:5000/api/enquiries",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          ),
+          fetch("/api/enquiries", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
         ]);
 
         if (enquiriesResponse.status === 401) {

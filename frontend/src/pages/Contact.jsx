@@ -8,7 +8,7 @@ function Contact() {
     const loadBusiness = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/business"
+          "/api/business"
         );
 
         const data = await response.json();
@@ -47,7 +47,9 @@ function Contact() {
         <div className="page-hero-content">
           <p>CONTACT US</p>
 
-          <h1>Let's Discuss Your Furniture Requirement</h1>
+          <h1>
+            Let's Discuss Your Furniture Requirement
+          </h1>
 
           <span>
             Call, WhatsApp or send us your requirement.

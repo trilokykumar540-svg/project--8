@@ -21,7 +21,7 @@ function AdminServices() {
   const fetchServices = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/services"
+        "/api/services"
       );
 
       const data = await response.json();
@@ -67,8 +67,8 @@ function AdminServices() {
       setSaving(true);
 
       const url = editingId
-        ? `http://localhost:5000/api/services/${editingId}`
-        : "http://localhost:5000/api/services";
+        ? `/api/services/${editingId}`
+        : "/api/services";
 
       const method = editingId ? "PUT" : "POST";
 
@@ -162,7 +162,7 @@ function AdminServices() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/services/${id}`,
+        `/api/services/${id}`,
         {
           method: "DELETE",
           headers: {

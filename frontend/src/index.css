@@ -3212,3 +3212,391 @@ url("/about-carpenter.jpg");
     object-position: center 18%;
   }
 }
+/* =========================================================
+   WOODMAGIC - FINAL RESPONSIVE SAFETY OVERRIDES
+   Added for launch readiness
+   ========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .nav-container {
+    width: min(94%, 760px);
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .home-hero {
+    min-height: 560px;
+  }
+
+  .hero-copy {
+    max-width: 600px;
+  }
+
+  .hero-copy h1 {
+    font-size: 46px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .public-section {
+    width: min(92%, 760px);
+    padding: 65px 0;
+  }
+
+  .page-hero-content {
+    width: 92%;
+  }
+
+  .page-hero-content h1 {
+    font-size: 42px;
+  }
+
+  .about-section,
+  .values-section,
+  .services-home,
+  .work-section,
+  .quote-section,
+  .professional-quote-section {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .contact-map-box {
+    gap: 25px;
+  }
+
+  .card-actions,
+  .direct-contact-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-navbar {
+    position: relative;
+  }
+
+  .nav-container {
+    width: 92%;
+    padding: 15px 0;
+  }
+
+  .brand-name {
+    font-size: 22px;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    gap: 9px 12px;
+  }
+
+  .nav-menu > a {
+    font-size: 12px;
+  }
+
+  .nav-quote {
+    padding: 9px 12px;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding: 70px 0;
+  }
+
+  .hero-container {
+    width: 90%;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .hero-copy h1 {
+    font-size: 36px;
+    line-height: 1.12;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .hero-buttons,
+  .cta-actions {
+    width: 100%;
+  }
+
+  .hero-buttons .button,
+  .cta-actions .button {
+    width: 100%;
+  }
+
+  .why-section,
+  .services-home,
+  .work-section,
+  .about-section,
+  .values-section,
+  .quote-section,
+  .professional-quote-section {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .why-heading h2,
+  .section-title h2,
+  .home-bottom-cta h2,
+  .about-content h2 {
+    font-size: 30px;
+  }
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+
+  .service-home-card,
+  .public-service-card,
+  .value-card,
+  .contact-premium-card {
+    padding: 24px 20px;
+  }
+
+  .work-card {
+    height: 285px;
+  }
+
+  .page-hero {
+    min-height: 280px;
+  }
+
+  .page-hero-content {
+    width: 90%;
+  }
+
+  .page-hero-content h1 {
+    font-size: 33px;
+  }
+
+  .page-hero-content span {
+    font-size: 15px;
+  }
+
+  .public-section {
+    width: 90%;
+    padding: 55px 0;
+  }
+
+  .gallery-image-wrap {
+    height: 235px;
+  }
+
+  .gallery-detail {
+    padding: 20px;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .card-actions a,
+  .card-actions button,
+  .small-primary-btn,
+  .small-outline-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-map-box {
+    padding: 28px 22px;
+  }
+
+  .contact-map-box h2 {
+    font-size: 25px;
+  }
+
+  .contact-map-box .button {
+    width: 100%;
+  }
+
+  .quote-info,
+  .quote-form-card {
+    padding: 28px 22px;
+  }
+
+  .quote-info h1 {
+    font-size: 31px;
+  }
+
+  .footer-main {
+    width: 90%;
+  }
+
+  .footer-mini-contact {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-mini-contact a {
+    text-align: center;
+  }
+
+  .admin-content {
+    padding: 24px 14px 40px;
+  }
+
+  .admin-sidebar {
+    padding: 20px 14px;
+  }
+
+  .admin-sidebar h2 {
+    font-size: 21px;
+  }
+
+  .admin-service-form-card {
+    width: 100%;
+    padding: 22px 16px;
+  }
+
+  .admin-service-item {
+    width: 100%;
+    padding: 18px 15px;
+  }
+
+  .admin-service-item > div:first-child {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-service-item img {
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  .admin-service-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .admin-service-actions button {
+    flex: 1 1 120px;
+  }
+
+  .admin-enquiry-card {
+    padding: 20px 16px;
+  }
+
+  .enquiry-contact-actions {
+    flex-wrap: wrap;
+  }
+
+  .enquiry-contact-actions a {
+    flex: 1 1 130px;
+    text-align: center;
+  }
+
+  .enquiry-status-section {
+    align-items: stretch;
+  }
+
+  .enquiry-status-section select {
+    max-width: 100%;
+  }
+
+  .admin-login-card {
+    padding: 30px 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-menu {
+    gap: 8px 10px;
+  }
+
+  .nav-menu > a {
+    font-size: 11px;
+  }
+
+  .nav-quote {
+    padding: 8px 10px;
+  }
+
+  .home-hero {
+    padding: 60px 0;
+  }
+
+  .hero-copy h1 {
+    font-size: 31px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 29px;
+  }
+
+  .why-heading h2,
+  .section-title h2,
+  .home-bottom-cta h2,
+  .about-content h2 {
+    font-size: 27px;
+  }
+
+  .about-image-overlay {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 16px;
+  }
+
+  .about-image-overlay strong {
+    font-size: 18px;
+  }
+
+  .about-owner-image {
+    height: 410px;
+  }
+
+  .work-card {
+    height: 250px;
+  }
+
+  .gallery-image-wrap {
+    height: 215px;
+  }
+
+  .professional-quote-form,
+  .quote-information-panel,
+  .quote-form-card,
+  .quote-info {
+    padding: 24px 16px;
+  }
+
+  .admin-header h1 {
+    font-size: 28px;
+  }
+
+  .admin-login-card {
+    padding: 26px 18px;
+  }
+}

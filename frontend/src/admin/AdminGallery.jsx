@@ -9,6 +9,9 @@ function AdminGallery() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
+  const [editingId, setEditingId] = useState(null);
+  const [existingImageUrl, setExistingImageUrl] = useState("");
+
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -27,7 +30,7 @@ function AdminGallery() {
   const fetchGallery = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/gallery"
+        "/api/gallery"
       );
 
       const data = await response.json();
@@ -84,32 +87,78 @@ function AdminGallery() {
     reader.readAsDataURL(file);
   };
 
+  const resetForm = () => {
+    setFormData({
+      title: "",
+      category: "",
+      description: "",
+      price: "",
+      imageBase64: "",
+    });
+
+    setEditingId(null);
+    setExistingImageUrl("");
+
+    const imageInput =
+      document.getElementById("galleryImage");
+
+    if (imageInput) {
+      imageInput.value = "";
+    }
+  };
+
+  const handleEdit = (item) => {
+    setEditingId(item._id);
+
+    setFormData({
+      title: item.title || "",
+      category: item.category || "",
+      description: item.description || "",
+      price: item.price || "",
+      imageBase64: "",
+    });
+
+    setExistingImageUrl(item.imageUrl || "");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
       !formData.title.trim() ||
-      !formData.category.trim() ||
-      !formData.imageBase64
+      !formData.category.trim()
     ) {
-      alert("Title, category and image are required.");
+      alert("Title and category are required.");
+      return;
+    }
+
+    if (!editingId && !formData.imageBase64) {
+      alert("Image is required.");
       return;
     }
 
     try {
       setSaving(true);
 
-      const response = await fetch(
-        "http://localhost:5000/api/gallery",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const url = editingId
+        ? `/api/gallery/${editingId}`
+        : "/api/gallery";
+
+      const method = editingId ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
 
@@ -120,31 +169,33 @@ function AdminGallery() {
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Failed to upload image."
+          data.message ||
+            (editingId
+              ? "Failed to update gallery item."
+              : "Failed to upload image.")
         );
       }
 
-      setItems((prevItems) => [
-        data.item,
-        ...prevItems,
-      ]);
+      if (editingId) {
+        setItems((prevItems) =>
+          prevItems.map((item) =>
+            item._id === editingId
+              ? data.item
+              : item
+          )
+        );
 
-      setFormData({
-        title: "",
-        category: "",
-        description: "",
-        price: "",
-        imageBase64: "",
-      });
+        alert("Gallery item updated successfully.");
+      } else {
+        setItems((prevItems) => [
+          data.item,
+          ...prevItems,
+        ]);
 
-      const imageInput =
-        document.getElementById("galleryImage");
-
-      if (imageInput) {
-        imageInput.value = "";
+        alert("Gallery item added successfully.");
       }
 
-      alert("Gallery item added successfully.");
+      resetForm();
     } catch (error) {
       alert(error.message);
     } finally {
@@ -161,7 +212,7 @@ function AdminGallery() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/gallery/${id}`,
+        `/api/gallery/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -188,6 +239,10 @@ function AdminGallery() {
           (item) => item._id !== id
         )
       );
+
+      if (editingId === id) {
+        resetForm();
+      }
     } catch (error) {
       alert(error.message);
     }
@@ -225,7 +280,11 @@ function AdminGallery() {
         </div>
 
         <div className="admin-service-form-card">
-          <h2>Add New Work</h2>
+          <h2>
+            {editingId
+              ? "Edit Gallery Item"
+              : "Add New Work"}
+          </h2>
 
           <form onSubmit={handleSubmit}>
             <input
@@ -266,16 +325,42 @@ function AdminGallery() {
               onChange={handleImageChange}
             />
 
+            {editingId &&
+              !formData.imageBase64 &&
+              existingImageUrl && (
+                <div>
+                  <p>Current Image</p>
+
+                  <img
+                    src={existingImageUrl}
+                    alt="Current"
+                    style={{
+                      width: "180px",
+                      marginTop: "10px",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+              )}
+
             {formData.imageBase64 && (
-              <img
-                src={formData.imageBase64}
-                alt="Preview"
-                style={{
-                  width: "180px",
-                  marginTop: "10px",
-                  borderRadius: "8px",
-                }}
-              />
+              <div>
+                <p>
+                  {editingId
+                    ? "New Image Preview"
+                    : "Image Preview"}
+                </p>
+
+                <img
+                  src={formData.imageBase64}
+                  alt="Preview"
+                  style={{
+                    width: "180px",
+                    marginTop: "10px",
+                    borderRadius: "8px",
+                  }}
+                />
+              </div>
             )}
 
             <button
@@ -283,9 +368,25 @@ function AdminGallery() {
               disabled={saving}
             >
               {saving
-                ? "Uploading..."
+                ? editingId
+                  ? "Updating..."
+                  : "Uploading..."
+                : editingId
+                ? "Save Changes"
                 : "Add to Gallery"}
             </button>
+
+            {editingId && (
+              <button
+                type="button"
+                onClick={resetForm}
+                style={{
+                  marginLeft: "10px",
+                }}
+              >
+                Cancel Edit
+              </button>
+            )}
           </form>
         </div>
 
@@ -329,6 +430,14 @@ function AdminGallery() {
                 </div>
 
                 <div className="admin-service-actions">
+                  <button
+                    onClick={() =>
+                      handleEdit(item)
+                    }
+                  >
+                    Edit
+                  </button>
+
                   <button
                     className="delete-btn"
                     onClick={() =>

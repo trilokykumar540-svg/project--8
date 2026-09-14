@@ -20,7 +20,7 @@ function GetQuote() {
     const fetchBusiness = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/business"
+          "/api/business"
         );
 
         const data = await response.json();
@@ -93,7 +93,7 @@ function GetQuote() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/enquiries",
+        "/api/enquiries",
         {
           method: "POST",
           headers: {
@@ -134,8 +134,8 @@ function GetQuote() {
     }
   };
 
-const businessName =
-  business?.businessName || "WoodMagic";
+  const businessName =
+    business?.businessName || "WoodMagic";
 
   const phone =
     business?.phone || "9931697178";

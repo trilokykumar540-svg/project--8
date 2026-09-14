@@ -30,7 +30,7 @@ function AdminBusiness() {
   const fetchBusinessInfo = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/business"
+        "/api/business"
       );
 
       const data = await response.json();
@@ -84,7 +84,7 @@ function AdminBusiness() {
       setSaving(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/business",
+        "/api/business",
         {
           method: "PUT",
           headers: {

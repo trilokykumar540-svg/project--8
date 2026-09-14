@@ -11,8 +11,8 @@ function Services() {
       try {
         const [serviceRes, businessRes] =
           await Promise.all([
-            fetch("http://localhost:5000/api/services"),
-            fetch("http://localhost:5000/api/business"),
+            fetch("/api/services"),
+            fetch("/api/business"),
           ]);
 
         const serviceData = await serviceRes.json();
