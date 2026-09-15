@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function AdminBusiness() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function AdminBusiness() {
   const fetchBusinessInfo = async () => {
     try {
       const response = await fetch(
-        "/api/business"
+        `${API_URL}/api/business`
       );
 
       const data = await response.json();
@@ -84,7 +85,7 @@ function AdminBusiness() {
       setSaving(true);
 
       const response = await fetch(
-        "/api/business",
+        `${API_URL}/api/business`,
         {
           method: "PUT",
           headers: {

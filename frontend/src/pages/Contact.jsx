@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/api";
 
 function Contact() {
   const [business, setBusiness] = useState(null);
@@ -8,7 +9,7 @@ function Contact() {
     const loadBusiness = async () => {
       try {
         const response = await fetch(
-          "/api/business"
+          `${API_URL}/api/business`
         );
 
         const data = await response.json();

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/api";
 
 function GetQuote() {
   const [business, setBusiness] = useState(null);
@@ -20,7 +21,7 @@ function GetQuote() {
     const fetchBusiness = async () => {
       try {
         const response = await fetch(
-          "/api/business"
+          `${API_URL}/api/business`
         );
 
         const data = await response.json();
@@ -93,7 +94,7 @@ function GetQuote() {
       setLoading(true);
 
       const response = await fetch(
-        "/api/enquiries",
+        `${API_URL}/api/enquiries`,
         {
           method: "POST",
           headers: {
@@ -162,13 +163,11 @@ function GetQuote() {
       </section>
 
       <section className="professional-quote-section">
-
         <div className="professional-quote-container">
 
           {/* LEFT SIDE */}
 
           <div className="quote-information-panel">
-
             <p className="quote-label">
               REQUEST A QUOTE
             </p>
@@ -185,7 +184,6 @@ function GetQuote() {
             </p>
 
             <div className="quote-benefits">
-
               <div className="quote-benefit-item">
                 <div className="quote-benefit-number">
                   01
@@ -227,17 +225,14 @@ function GetQuote() {
                   </p>
                 </div>
               </div>
-
             </div>
 
             <div className="quote-direct-contact">
-
               <p className="direct-title">
                 Prefer Direct Contact?
               </p>
 
               <div className="direct-contact-buttons">
-
                 <a
                   href={`tel:${phone}`}
                   className="quote-call-button"
@@ -255,17 +250,13 @@ function GetQuote() {
                 >
                   WhatsApp
                 </a>
-
               </div>
-
             </div>
-
           </div>
 
           {/* RIGHT FORM */}
 
           <div className="professional-quote-form">
-
             <div className="quote-form-heading">
               <p>FREE ESTIMATE</p>
 
@@ -277,9 +268,7 @@ function GetQuote() {
             </div>
 
             <form onSubmit={handleSubmit}>
-
               <div className="quote-form-row">
-
                 <div className="quote-field">
                   <label>
                     Full Name
@@ -310,11 +299,9 @@ function GetQuote() {
                     onChange={handleChange}
                   />
                 </div>
-
               </div>
 
               <div className="quote-form-row">
-
                 <div className="quote-field">
                   <label>
                     Location
@@ -374,7 +361,6 @@ function GetQuote() {
                     </option>
                   </select>
                 </div>
-
               </div>
 
               <div className="quote-field">
@@ -428,13 +414,9 @@ function GetQuote() {
                 requesting {businessName} to contact
                 you regarding your carpenter work.
               </p>
-
             </form>
-
           </div>
-
         </div>
-
       </section>
     </>
   );

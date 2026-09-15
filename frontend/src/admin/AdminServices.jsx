@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function AdminServices() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function AdminServices() {
   const fetchServices = async () => {
     try {
       const response = await fetch(
-        "/api/services"
+        `${API_URL}/api/services`
       );
 
       const data = await response.json();
@@ -67,8 +68,8 @@ function AdminServices() {
       setSaving(true);
 
       const url = editingId
-        ? `/api/services/${editingId}`
-        : "/api/services";
+        ? `${API_URL}/api/services/${editingId}`
+        : `${API_URL}/api/services`;
 
       const method = editingId ? "PUT" : "POST";
 
@@ -162,7 +163,7 @@ function AdminServices() {
 
     try {
       const response = await fetch(
-        `/api/services/${id}`,
+        `${API_URL}/api/services/${id}`,
         {
           method: "DELETE",
           headers: {

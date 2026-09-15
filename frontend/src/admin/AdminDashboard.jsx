@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -31,11 +32,11 @@ function AdminDashboard() {
           galleryResponse,
           enquiriesResponse,
         ] = await Promise.all([
-          fetch("/api/services"),
+          fetch(`${API_URL}/api/services`),
 
-          fetch("/api/gallery"),
+          fetch(`${API_URL}/api/gallery`),
 
-          fetch("/api/enquiries", {
+          fetch(`${API_URL}/api/enquiries`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

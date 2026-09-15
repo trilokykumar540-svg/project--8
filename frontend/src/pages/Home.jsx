@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function Home() {
   const [business, setBusiness] = useState(null);
@@ -11,9 +12,9 @@ function Home() {
       try {
         const [businessRes, servicesRes, galleryRes] =
           await Promise.all([
-            fetch("/api/business"),
-            fetch("/api/services"),
-            fetch("/api/gallery"),
+            fetch(`${API_URL}/api/business`),
+            fetch(`${API_URL}/api/services`),
+            fetch(`${API_URL}/api/gallery`),
           ]);
 
         const businessData = await businessRes.json();

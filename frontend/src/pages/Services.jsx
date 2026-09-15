@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -11,8 +12,8 @@ function Services() {
       try {
         const [serviceRes, businessRes] =
           await Promise.all([
-            fetch("/api/services"),
-            fetch("/api/business"),
+            fetch(`${API_URL}/api/services`),
+            fetch(`${API_URL}/api/business`),
           ]);
 
         const serviceData = await serviceRes.json();

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/api";
 
 function Gallery() {
   const [items, setItems] = useState([]);
@@ -10,8 +11,8 @@ function Gallery() {
       try {
         const [galleryRes, businessRes] =
           await Promise.all([
-            fetch("/api/gallery"),
-            fetch("/api/business"),
+            fetch(`${API_URL}/api/gallery`),
+            fetch(`${API_URL}/api/business`),
           ]);
 
         const galleryData = await galleryRes.json();

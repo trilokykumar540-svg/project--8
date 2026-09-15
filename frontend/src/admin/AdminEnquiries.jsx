@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function AdminEnquiries() {
   const navigate = useNavigate();
@@ -19,11 +20,14 @@ function AdminEnquiries() {
 
   const fetchEnquiries = async () => {
     try {
-      const response = await fetch("/api/enquiries", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${API_URL}/api/enquiries`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -53,7 +57,7 @@ function AdminEnquiries() {
   const handleStatusChange = async (id, status) => {
     try {
       const response = await fetch(
-        `/api/enquiries/${id}/status`,
+        `${API_URL}/api/enquiries/${id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -101,7 +105,7 @@ function AdminEnquiries() {
 
     try {
       const response = await fetch(
-        `/api/enquiries/${id}`,
+        `${API_URL}/api/enquiries/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -248,12 +252,15 @@ function AdminEnquiries() {
                     }
                   >
                     <option value="New">New</option>
+
                     <option value="Contacted">
                       Contacted
                     </option>
+
                     <option value="Confirmed">
                       Confirmed
                     </option>
+
                     <option value="Completed">
                       Completed
                     </option>

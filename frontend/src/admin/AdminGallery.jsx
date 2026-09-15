@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 function AdminGallery() {
   const navigate = useNavigate();
@@ -23,14 +24,16 @@ function AdminGallery() {
   const handleUnauthorized = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminData");
+
     alert("Session expired. Please login again.");
+
     navigate("/admin/login");
   };
 
   const fetchGallery = async () => {
     try {
       const response = await fetch(
-        "/api/gallery"
+        `${API_URL}/api/gallery`
       );
 
       const data = await response.json();
@@ -146,8 +149,8 @@ function AdminGallery() {
       setSaving(true);
 
       const url = editingId
-        ? `/api/gallery/${editingId}`
-        : "/api/gallery";
+        ? `${API_URL}/api/gallery/${editingId}`
+        : `${API_URL}/api/gallery`;
 
       const method = editingId ? "PUT" : "POST";
 
@@ -212,7 +215,7 @@ function AdminGallery() {
 
     try {
       const response = await fetch(
-        `/api/gallery/${id}`,
+        `${API_URL}/api/gallery/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -230,7 +233,8 @@ function AdminGallery() {
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Failed to delete gallery item."
+          data.message ||
+            "Failed to delete gallery item."
         );
       }
 
